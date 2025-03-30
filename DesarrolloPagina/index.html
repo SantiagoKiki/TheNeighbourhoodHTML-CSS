@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="author" content="Santiago Alberto Quiroz" />
+
+  <title>The Neighbourhood - Página Oficial</title>
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Estilos en el mismo archivo -->
+  <style>
+    /*-------------------*
+     |  VARIABLES CSS   |
+     *-------------------*/
+    :root {
+      --color-beige: #726b41;
+      --color-negro: #000000;
+      --color-cafe: #5a3d28;
+      --color-texto: #ffffff;
+      --color-beige-claro: #000000;
+      --color-cafe-oscuro: #3e2411; /* Nuevo color oscuro para la discografía */
+      --color-blanco: #fff; /* Blanco */
+    }
+    
+    /*-------------------*
+     |  RESETEO BÁSICO  |
+     *-------------------*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /*---------------*
+     |  TIPOGRAFÍA  |
+     *---------------*/
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--color-beige);
+      color: var(--color-texto);
+      line-height: 1.5;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--color-texto);
+    }
+    a {
+      text-decoration: none;
+      color: var(--color-cafe);
+    }
+    a:hover {
+      color: var(--color-negro);
+    }
+    
+    /*---------------*
+     |  ENCABEZADO  |
+     *---------------*/
+    header {
+      background-color: var(--color-negro);
+      padding: 1rem;
+    }
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar-brand {
+      color: var(--color-blanco);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .nav-links ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--color-blanco);
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: var(--color-blanco);
+    }
+    
+    /*----------*
+     |  HERO   |
+     *----------*/
+    .hero {
+      background-color: var(--color-negro);
+      color: var(--color-beige);
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+    .hero img {
+      max-width: 200px;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /*-------------------*
+     |  DISCOGRAPHY     |
+     *-------------------*/
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: var(--color-blanco);
+      text-transform: uppercase;
+    }
+    .discography-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .album-card {
+      background-color: var(--color-cafe);
+      color: var(--color-beige-claro);
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .album-card:hover {
+      transform: translateY(-5px);
+    }
+    .album-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .album-card h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.3rem;
+      color: var(--color-beige-claro);
+    }
+    .album-card p {
+      font-size: 0.95rem;
+      padding: 0 0.5rem 1rem;
+    }
+    
+    /*---------------*
+     |  ABOUT US     |
+     *---------------*/
+    .about {
+      background-color: var(--color-beige-claro);
+      color: var(--color-texto);
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .about p {
+      max-width: 800px;
+      margin: 1rem auto;
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    
+    /*---------------*
+     |  CONTACTO     |
+     *---------------*/
+    .contact {
+      background-color: var(--color-negro);
+      color: var(--color-beige);
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+    .contact input,
+    .contact textarea {
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-family: 'Lato', sans-serif;
+    }
+    .contact button {
+      background-color: var(--color-cafe);
+      color: var(--color-beige-claro);
+      border: none;
+      padding: 0.8rem 1.2rem;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      text-transform: uppercase;
+    }
+    .contact button:hover {
+      background-color: var(--color-beige);
+      color: var(--color-cafe);
+    }
+
+/*-------------------*
+ |  SUSCRIPCIÓN     |
+ *-------------------*/
+ .suscripcion {
+  background-color: var(--color-negro);
+  padding: 4rem 1rem;
+  color: var(--color-blanco);
+}
+
+.suscripcion-content {
+  text-align: center;
+}
+
+.suscripcion h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-blanco);
+}
+
+.suscripcion p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.suscripcion-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input-field {
+  padding: 1rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 0.5rem 0;
+  border: 1px solid var(--color-beige);
+  border-radius: 5px;
+  background-color: var(--color-beige);
+  color: var(--color-negro);
+}
+
+.suscripcion-btn {
+  background-color: var(--color-cafe);
+  color: var(--color-blanco);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.suscripcion-btn:hover {
+  background-color: var(--color-beige);
+  color: var(--color-cafe);
+}
+
+.suscripcion-form input:focus {
+  outline: none;
+  border-color: var(--color-cafe); /* Resalta el borde en café al hacer foco */
+}
+
+.mensaje-exito {
+  background-color: var(--color-beige);
+  color: var(--color-cafe);
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+
+    
+    /*---------------*
+     |   FOOTER      |
+     *---------------*/
+    footer {
+      background-color: var(--color-negro);
+      color: var(--color-beige);
+      text-align: center;
+      padding: 1.5rem 1rem;
+    }
+    footer small {
+      font-size: 0.9rem;
+    }
+    
+    /*---- RESPONSIVE PEQUEÑO ----*/
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero img {
+        max-width: 150px;
+      }
+      .navbar .nav-links ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    .texto-blanco {
+      color: var(--color-blanco);
+    }
+    footer {
+  background-color: var(--color-negro);
+  color: var(--color-beige);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+footer h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; /* Ajusté la distancia entre los enlaces */
+  margin-top: 1rem;
+}
+
+footer .social-icons a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+footer .social-logo {
+  width: 30px; /* Tamaño del logo */
+  height: auto;
+  transition: transform 0.3s ease; /* Efecto de transformación */
+}
+
+footer .social-icons a:hover .social-logo {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+footer .social-icons a:active .social-logo {
+  transform: scale(0.9); /* Pequeña reducción al hacer clic */
+}
+  </style>
+</head>
+
+
+
+
+<body>
+
+  <!-- ENCABEZADO / NAV -->
+  <header>
+    <nav class="navbar">
+      <div class="navbar-brand" class="texto-blanco">The Neighbourhood</div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#discografia">Discografía</a></li>
+          <li><a href="#about" >Sobre The Neighbourhood</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="#spotify">Spotify</a>
+          </li>          
+          <li><a href="#suscripcion" >Suscribirse</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN HERO -->
+  <section class="hero" id="hero">
+    <img src="assets\img\info\the-neighbourhood.jpg" alt="Logo The Neighbourhood"/>
+    <h1>The Neighbourhood</h1>
+    <p class="texto-blanco">Bienvenido a la página de fans de The Neighbourhood. Explora sobre su música y conoce más sobre la banda.</p>
+  </section>
+
+  <!-- SECCIÓN DISCOGRAFÍA -->
+  <section class="section" id="discografia">
+    <h2 class="section-title">Discografía</h2>
+    <!-- Álbum 1 -->
+    <div class="discography-grid">
+        <div class="album-card">
+            <img src="assets\img\info\fd77b44f2a17a0403cab7a61eccff3f7.582x582x1.jpg" alt="Portada Álbum 1"/>
+            <h3>I'm sorry (2012)</h3>
+            <p>Todo inicia en 2012 con la salida de I'm sorry en donde a partir de ese album y su hit "Sweater Weather" se dan a conocer</p>
+          </div>
+    <!-- Álbum 2 -->
+    <div class="album-card">
+        <img src="assets\img\info\196fab6ef6c79f7fcf73b55d1505dbab.webp" alt="Portada de I love you"/>
+        <h3>I Love You (2013)</h3>
+        <p>El primer álbum de estudio que los impulso siendo una banda independiente. Un sonido fresco con influencias del rock indie y pop.</p>
+      </div>
+    <!-- Álbum 3 -->
+    <div class="album-card">
+        <img src="assets\img\info\ab67616d0000b273dc55b97e9bb9f1c0addc6d57.jpg" alt="Portada Álbum 2"/>
+        <h3>#000000 & #ffffff (2014)</h3>
+        <p>Un álbum con una perspectiva sobre la esperanza y la luz, con matices de pop resaltando la posibilidad de volver de la oscuridad (blanco y negro).</p>
+      </div>
+    <!-- Álbum 4 -->
+    <div class="album-card">
+        <img src="assets\img\info\s-l400.jpg" alt="Portada Álbum 3"/>
+        <h3>Wiped Out! (2015)</h3>
+        <p>Un álbum más profundo y melancólico, con el sencillo "R.I.P. 2 My Youth". Mezcla elementos alternativos y R&B.</p>
+      </div>
+    <!-- Álbum 5 -->
+    <div class="album-card">
+        <img src="assets\img\info\1f275e2e5c2b452b70a67a276559664e.1000x1000x1.jpg" alt="Portada Álbum 4"/>
+        <h3>Hard (2017)</h3>
+        <p>Un episodio de canciones pero con dos joyas de toda su discografía como lo son "You get me so high" y "Sadderdaze".</p>
+      </div>
+    <!-- Álbum 6 -->
+    <div class="album-card">
+        <img src="assets\img\info\ab67616d0000b27347cc2c8d86c96f3e9ba47907.jpg" alt="Portada Álbum 5"/>
+        <h3>To Imagine (2018)</h3>
+        <p>Una autentica obra de arte para los fans pues contiene canciones como "Stuck with me" y "Compass" es un episodio lleno de emoción y obras destacables.</p>
+      </div>
+    <!-- Álbum 7 -->
+    <div class="album-card">
+        <img src="assets\img\info\81F27c5DIXL._UF1000,1000_QL80_.jpg" alt="Portada 6"/>
+        <h3>The Neighbourhood (2018)</h3>
+        <p>Un disco homónimo que fusiona rock, pop y electrónica, mostrando la versatilidad de la banda es considerado el mejor álbum de la banda por nueva propuesta.</p>
+      </div>
+    <!-- Álbum 8 -->
+      <div class="album-card">
+        <img src="assets\img\info\1200x1200bb.jpg" alt="Portada Álbum 7"/>
+        <h3>Chip Chrome & The Mono-Tones (2020)</h3>
+        <p>El último álbum de la banda antes de sU separación, adicionalmente es la incursión sobre una estética diferente, con sonidos más experimentales y visuales distintivos.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECCIÓN SOBRE NOSOTROS -->
+  <section class="about" id="about">
+    <h2>Sobre The Neighbourhood</h2>
+    <p>
+      Se crea en California en 2011, The Neighbourhood es una banda de indie rock conocida por su estilo
+      característico y sus letras melancólicas. Su nombre nace a partir de la pronunciación británica de neighborhood (u por la o) buscando
+      distinguirse de otras bandas desde su nombre. Su música combina influencias del rock alternativo,
+      el pop, el R&B y la electrónica. Desde 2022 llevan un parón indefinido, pero su legado musical sigue vivo. Entre sus álbumes destacables
+      se tiene "I Love You", "Wiped Out!" y "Chip Chrome & The Mono-Tones".
+    </p>
+  </section>
+
+    
+    <!-- SECCIÓN MÚSICA -->
+  <section id ="spotify" class="container section">
+    <h2>Escuchalos por medio de Spotify</h2>
+    <p>
+        Si deseas escucharlos de nuevo o por primera vez:
+    </p>
+
+    <iframe
+      style="border-radius: 12px"
+      src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO4dpvkA?si=i7qC_CGISwiFJAgy0y0hDQ?utm_source=generator&theme=0"
+      width="100%"
+      height="380"
+      frameborder="0"
+      allowfullscreen
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+    >
+    </iframe>
+  </section>
+
+
+<!-- SECCIÓN DE SUSCRIPCIÓN -->
+<section class="suscripcion" id="suscripcion">
+    <div class="container">
+      <div class="suscripcion-content">
+        <h2 class="section-title">¡Suscríbete para recibir más información si vuelven!</h2>
+        <form id="suscripcionForm" class="suscripcion-form">
+          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required class="input-field">
+          <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required class="input-field">
+          <button type="submit" class="suscripcion-btn">Suscribirse</button>
+        </form>
+        <div id="mensajeExito" class="mensaje-exito" style="display:none;">
+          <p>¡Gracias por suscribirte! Recibirás más información pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+        <div class="footer-content">
+          <h4>Síguelos en redes sociales (esperando a que vuelvan)</h4>
+          <div class="social-icons">
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/theneighbourhood" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="social-logo">
+            </a>
+            
+            <!-- Twitter -->
+            <a href="https://x.com/thenbhd" target="_blank">
+              <img src="assets\img\info\images.png" alt="Twitter" class="social-logo">
+          </a>
+    
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/thenbhd/" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="social-logo">
+            </a>
+    
+            <!-- Spotify -->
+            <a href="https://open.spotify.com/intl-es/artist/77SW9BnxLY8rJ0RciFqkHh?si=440fa27cea004c58" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" class="social-logo">
+          </a>
+          </div>
+        </div>
+      </div>
+      <small class="texto-blanco">
+        <p class="mt-3 text-muted">&copy; 2025</p>
+        The neighbourhood</copy>
+      </small>
+    </footer>
+
+</body>
+</html>
